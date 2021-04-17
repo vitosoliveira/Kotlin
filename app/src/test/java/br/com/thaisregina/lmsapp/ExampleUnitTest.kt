@@ -1,4 +1,4 @@
-package br.com.fernandosousa.lmsapp
+package br.com.thaisregina.lmsapp
 
 import org.junit.Test
 

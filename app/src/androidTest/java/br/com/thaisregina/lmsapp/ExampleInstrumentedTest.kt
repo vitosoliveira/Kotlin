@@ -1,4 +1,4 @@
-package br.com.fernandosousa.lmsapp
+package br.com.thaisregina.lmsapp
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("br.com.fernandosousa.lmsapp", appContext.packageName)
+        assertEquals("br.com.thaisregina.lmsapp", appContext.packageName)
     }
 }

@@ -1,11 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Tema com Action Bar. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Cor primária da ActionBar -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/purple_200</item>
         <!-- Cor primária escura da barra do sistema -->
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/purple_500</item>
         <!-- Cor de destaque -->
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/purple_700</item>
+    </style>
+    <!-- Tema com Toolbar. -->
+    <style name="AppTheme.Toolbar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 </resources>

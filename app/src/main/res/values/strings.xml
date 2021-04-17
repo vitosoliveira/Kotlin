@@ -1,10 +1,8 @@
 <resources>
-    <string name="app_name">App name</string>
+    <string name="app_name">Doces Da Leite</string>
     <string name="mensagem_inicial"> Bem-vindo </string>
     <string name="mensagem_login">Faça seu login</string>
-    <string name="action_adicionar">Adicionar</string>
+    <string name="action_buscar">Buscar</string>
     <string name="action_atualizar">Atualizar</string>
-    <string name="action_sair">Sair</string>
-    <drawable name="ic_adicionar_black"></drawable>
-    <drawable name="ic_atualizar_black"></drawable>
+    <string name="action_config">Config</string>
 </resources>
