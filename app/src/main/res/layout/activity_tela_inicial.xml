@@ -1,18 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".TelaInicialActivity">
+    android:id="@+id/layoutMenuLateral"
+    android:fitsSystemWindows="true"
+    >
 
-
-    <TextView
-        android:id="@+id/textoTelaInicial"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Texto muito grande para eticar o layout" />
+        android:orientation="vertical"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".TelaInicialActivity"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <include layout="@layout/toolbar" />
+
+        <TextView
+            android:id="@+id/textoTelaInicial"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Texto muito grande para eticar o layout" />
 
 
-</LinearLayout>
+    </LinearLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/menu_lateral"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/menu_lateral_cabecalho"
+        app:menu="@menu/menu_lateral"
+        >
+    </com.google.android.material.navigation.NavigationView>
+
+</androidx.drawerlayout.widget.DrawerLayout>

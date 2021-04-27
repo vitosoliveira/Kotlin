@@ -7,6 +7,8 @@
         <item name="colorPrimaryDark">@color/purple_500</item>
         <!-- Cor de destaque -->
         <item name="colorAccent">@color/purple_700</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
     <!-- Tema com Toolbar. -->
     <style name="AppTheme.Toolbar" parent="AppTheme">

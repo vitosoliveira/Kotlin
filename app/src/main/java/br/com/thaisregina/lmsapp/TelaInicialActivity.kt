@@ -6,28 +6,75 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.GravityCompat
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_tela_inicial.*
 import kotlinx.android.synthetic.main.toolbar.*
+import androidx.appcompat.widget.Toolbar;
 
-class TelaInicialActivity : DebugActivity() {
+
+
+class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSelectedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_inicial)
 
         val args = intent.extras
         val usuario = args?.getString("usuario")
-        val numero = args?.getInt("numero")
-        val logico_2 = args?.getBoolean("logico_2")
 
         Toast.makeText(this, usuario, Toast.LENGTH_LONG).show()
 
-        textoTelaInicial.setText("Olá $usuario")
+//        textoTelaInicial.setText("Olá $usuario")
 
-        supportActionBar?.title = "Produtos"
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        configuraMenuLateral()
+
+
     }
+
+    private fun configuraMenuLateral(){
+
+        var toogle = ActionBarDrawerToggle(
+                this,
+                layoutMenuLateral,
+                toolbar,
+                R.string.drawer_open,
+                R.string.drawer_close
+        )
+        layoutMenuLateral.addDrawerListener(toogle)
+        toogle.syncState()
+
+
+        menu_lateral.setNavigationItemSelectedListener(this)
+
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.nav_receitas -> {
+                Toast.makeText(this, "Clicou receitas", Toast.LENGTH_SHORT).show()
+            }
+            R.id.nav_presentes -> {
+                Toast.makeText(this, "Clicou presentes", Toast.LENGTH_SHORT).show()
+            }
+            R.id.nav_forum -> {
+                Toast.makeText(this, "Clicou forum", Toast.LENGTH_SHORT).show()
+            }
+            R.id.nav_localizacao -> {
+                Toast.makeText(this, "Clicou localizacao", Toast.LENGTH_SHORT).show()
+            }
+        }
+        layoutMenuLateral.closeDrawer(GravityCompat.START)
+
+        return true
+
+    }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         // infla o menu com os botões da ActionBar
@@ -66,12 +113,11 @@ class TelaInicialActivity : DebugActivity() {
             startActivity(intent)
         }
         else if (id == android.R.id.home) {
-            finish()
+//            finish()
+            return true
         }
 
         return super.onOptionsItemSelected(item)
     }
-
-
 
 }

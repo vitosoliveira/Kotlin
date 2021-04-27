@@ -9,7 +9,7 @@ class ConfiguracoesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_configuracoes)
 
         supportActionBar?.title = "Configurações"
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
 }
