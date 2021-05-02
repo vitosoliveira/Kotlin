@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.SearchView
@@ -13,7 +14,8 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_tela_inicial.*
 import kotlinx.android.synthetic.main.toolbar.*
 import androidx.appcompat.widget.Toolbar;
-
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
 
 
 class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -28,11 +30,35 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
 //        textoTelaInicial.setText("Olá $usuario")
 
+        setSupportActionBar(toolbar)
+
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         configuraMenuLateral()
+        recycleDisciplinas?.layoutManager = LinearLayoutManager(this)
+        recycleDisciplinas?.itemAnimator = DefaultItemAnimator()
+        recycleDisciplinas?.setHasFixedSize(true)
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        taskDisciplinas()
+    }
+
+    private var disciplinas = listOf<Disciplina>()
+
+    private fun taskDisciplinas(){
+
+        this.disciplinas = DisciplinaService.getDisciplinas()
+        recycleDisciplinas?.adapter = DisciplinaAdapter(disciplinas) {onClickDisciplina(it)}
+
+    }
+
+    fun onClickDisciplina(disciplina: Disciplina){
+
+        Toast.makeText(this, "Clicou na disc ${disciplina.nome}", Toast.LENGTH_SHORT).show()
 
     }
 
