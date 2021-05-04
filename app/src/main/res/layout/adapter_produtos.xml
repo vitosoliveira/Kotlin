@@ -18,25 +18,20 @@
             android:id="@+id/card_nome"
             android:layout_margin="16dp"
             android:textSize="20sp"
+            android:textColor="#b26312"
             />
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
+
             <ImageView
                 android:layout_width="match_parent"
                 android:id="@+id/card_img"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"/>
-
-            <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:visibility="invisible"
-                android:id="@+id/card_progresso"
+                android:adjustViewBounds="true"
                 />
-
         </FrameLayout>
     </LinearLayout>
 

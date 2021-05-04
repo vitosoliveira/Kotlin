@@ -1,12 +1,11 @@
 package br.com.thaisregina.lmsapp
 
-class Disciplina {
+class Produtos {
 
+    var valor = ""
     var id: Long = 0
     var nome = ""
-    var ementa = ""
     var foto = ""
-    var professor = ""
 
 
 
