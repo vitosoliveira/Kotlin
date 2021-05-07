@@ -1,6 +1,8 @@
 package br.com.thaisregina.lmsapp
 
-class Produtos {
+import java.io.Serializable
+
+class Produtos : Serializable {
 
     var valor = ""
     var id: Long = 0

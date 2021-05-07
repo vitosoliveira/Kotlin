@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.thaisregina.lmsapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,9 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LMSApp">
-        <activity android:name=".ConfiguracoesActivity"></activity>
-        <activity android:name=".TelaInicialActivity"
-            android:theme = "@style/Theme.Toolbar"/>
+        <activity android:name=".Detalhe_produto"></activity>
+        <activity android:name=".ConfiguracoesActivity" />
+        <activity
+            android:name=".TelaInicialActivity"
+            android:theme="@style/Theme.Toolbar" />
         <activity android:name=".DebugActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

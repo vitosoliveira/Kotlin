@@ -8,6 +8,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.login.*
 
 class ProdutosAdapter(
@@ -17,13 +18,13 @@ class ProdutosAdapter(
     class ProdutosViewHolder (view: View): RecyclerView.ViewHolder(view){
         val cardNome: TextView
         val cardImg: ImageView
-//        val cardProgress: ProgressBar
+        val cardProgress: ProgressBar
         val cardView: CardView
 
         init {
             cardNome = view.findViewById(R.id.card_nome)
             cardImg = view.findViewById(R.id.card_img)
-//            cardProgress = view.findViewById(R.id.card_progresso)
+            cardProgress = view.findViewById(R.id.card_progresso)
             cardView = view.findViewById(R.id.card_disciplina)
         }
 
@@ -45,8 +46,23 @@ class ProdutosAdapter(
         val produto = this.produtos[position]
 
         holder.cardNome.text = produto.nome
-//        holder.cardProgress.visibility = View.VISIBLE
+        holder.cardProgress.visibility = View.VISIBLE
+
+        val contexto = holder.itemView.context
+
         holder.cardImg.setImageResource(R.drawable.produto3)
         holder.itemView.setOnClickListener{ onClick(produto) }
+        Picasso.with(contexto).load(produto.foto).fit().into(holder.cardImg,
+                object : com.squareup.picasso.Callback {
+                    override fun onSuccess() {
+                        holder.cardProgress.visibility = View.GONE
+                    }
+
+                    override fun onError(){
+                        holder.cardProgress.visibility = View.GONE
+                        holder.cardImg.setImageResource(R.drawable.tela_login)
+                    }
+
+        })
     }
 }

@@ -55,8 +55,10 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
     fun onClickProdutos(produtos: Produtos){
 
-        Toast.makeText(this, "Clicou na disc ${produtos.nome}", Toast.LENGTH_SHORT).show()
-
+        Toast.makeText(this, "Clicou no produto:  ${produtos.nome}", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, Detalhe_produto::class.java)
+        intent.putExtra("produto", produtos)
+        startActivity(intent)
     }
 
     private fun configuraMenuLateral(){
