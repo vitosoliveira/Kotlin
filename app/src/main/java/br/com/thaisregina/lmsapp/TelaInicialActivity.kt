@@ -48,9 +48,12 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
     private fun taskProdutos(){
 
-        this.produtos = ProdutosService.getProdutos()
-        recycleProdutos?.adapter = ProdutosAdapter(produtos) {onClickProdutos(it)}
-
+        Thread{
+            this.produtos = ProdutosService.getDisciplinas()
+            runOnUiThread{
+                recycleProdutos?.adapter = ProdutosAdapter(produtos) {onClickProdutos(it)}
+            }
+        }.start()
     }
 
     fun onClickProdutos(produtos: Produtos){

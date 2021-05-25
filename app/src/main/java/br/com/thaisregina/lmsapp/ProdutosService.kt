@@ -1,18 +1,31 @@
 package br.com.thaisregina.lmsapp
 
+import android.util.Log
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+
 object ProdutosService {
-    fun getProdutos(): List<Produtos>{
+    val host = "https://fesousa.pythonanywhere.com"
+    val TAG = "WS_LMSAPP"
+    fun getDisciplinas (): List<Produtos> {
 
-        val produtos = mutableListOf<Produtos>()
+        val url = "$host/disciplinas"
+        val json = HttpHelper.get(url)
 
-        for (i in 1..10){
-            val d = Produtos()
-            d.nome = "Produto $i"
-            d.valor = "Valor $i"
-            d.foto = "https://www.oetker.com.br/Recipe/Recipes/oetker.com.br/br-pt/baking/image-thumb__40008__RecipeDetailsLightBox/bolo-de-aniversario-de-chocolate.jpg"
-            produtos.add(d)
-        }
-        return  produtos
+        Log.d(TAG,json)
+        var disciplinas = parserJson<ArrayList<Produtos>>(json)
+        return disciplinas
+    }
+
+    fun saveDisciplina(disciplina: Produtos){
+        val json = disciplina.toJson()
+        HttpHelper.post("$host/disciplinas", json)
+
+    }
+
+    inline fun<reified T> parserJson(json: String): T{
+        val type = object : TypeToken<T>(){}.type
+        return  Gson().fromJson<T>(json, type)
 
     }
 
