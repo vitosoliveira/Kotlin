@@ -17,7 +17,6 @@ object HttpHelper {
             return body.string()
         }
         throw IOException("Erro na requisição")
-
     }
 
     fun get (url: String):String{
@@ -27,10 +26,9 @@ object HttpHelper {
 
     val JSON = MediaType.parse("application/json; charset=utf-8")
 
-    fun post (url: String, json: String): String {
+    fun post(url: String, json: String): String {
         val body = RequestBody.create(JSON, json)
         val request = Request.Builder().url(url).post(body).build()
         return getJson(request)
     }
-
 }

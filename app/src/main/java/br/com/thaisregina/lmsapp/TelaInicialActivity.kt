@@ -13,12 +13,16 @@ import kotlinx.android.synthetic.main.activity_tela_inicial.*
 import kotlinx.android.synthetic.main.toolbar.*
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.login.*
 
 
-class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSelectedListener {
+class TelaInicialActivity : NavigationDrawerActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_inicial)
+
+        val campo_usuario = Prefs.getString("nome_usuario")
+        Toast.makeText(this, "Prefs: ${campo_usuario}", Toast.LENGTH_LONG).show()
 
         val args = intent.extras
         val usuario = args?.getString("usuario")
@@ -26,11 +30,6 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         Toast.makeText(this, usuario, Toast.LENGTH_LONG).show()
 
 //        textoTelaInicial.setText("Olá $usuario")
-
-        setSupportActionBar(toolbar)
-
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         configuraMenuLateral()
         recycleProdutos?.layoutManager = LinearLayoutManager(this)
@@ -50,7 +49,8 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
         Thread{
             this.produtos = ProdutosService.getDisciplinas()
-            runOnUiThread{
+            runOnUiThread {
+                // Atualizar lista
                 recycleProdutos?.adapter = ProdutosAdapter(produtos) {onClickProdutos(it)}
             }
         }.start()
@@ -63,45 +63,6 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         intent.putExtra("produto", produtos)
         startActivity(intent)
     }
-
-    private fun configuraMenuLateral(){
-
-        var toogle = ActionBarDrawerToggle(
-                this,
-                layoutMenuLateral,
-                toolbar,
-                R.string.drawer_open,
-                R.string.drawer_close
-        )
-        layoutMenuLateral.addDrawerListener(toogle)
-        toogle.syncState()
-
-
-        menu_lateral.setNavigationItemSelectedListener(this)
-
-    }
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.nav_receitas -> {
-                Toast.makeText(this, "Clicou receitas", Toast.LENGTH_SHORT).show()
-            }
-            R.id.nav_presentes -> {
-                Toast.makeText(this, "Clicou presentes", Toast.LENGTH_SHORT).show()
-            }
-            R.id.nav_forum -> {
-                Toast.makeText(this, "Clicou forum", Toast.LENGTH_SHORT).show()
-            }
-            R.id.nav_localizacao -> {
-                Toast.makeText(this, "Clicou localizacao", Toast.LENGTH_SHORT).show()
-            }
-        }
-        layoutMenuLateral.closeDrawer(GravityCompat.START)
-
-        return true
-
-    }
-
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
