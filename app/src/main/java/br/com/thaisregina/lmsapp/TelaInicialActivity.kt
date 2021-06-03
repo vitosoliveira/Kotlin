@@ -70,6 +70,7 @@ class TelaInicialActivity : NavigationDrawerActivity() {
         startActivity(intent)
     }
 
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         // infla o menu com os botões da ActionBar
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -115,4 +116,3 @@ class TelaInicialActivity : NavigationDrawerActivity() {
         return super.onOptionsItemSelected(item)
     }
 }
-
