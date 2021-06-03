@@ -2,6 +2,7 @@ package br.com.thaisregina.lmsapp
 
 import android.util.Log
 import androidx.room.Database
+import com.google.android.gms.common.api.Response
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -45,4 +46,13 @@ object ProdutosService {
         return Gson().fromJson<T>(json, type)
 
     }
+
+    fun delete(produtos: Produtos) {
+        /*    val json = disciplina.toJson()
+        HttpHelper.post("$host/disciplinas", json)
+*/
+        val dao = DatabaseManager.getProdutosDAO()
+        dao.insert(produtos)
+    }
+
 }
