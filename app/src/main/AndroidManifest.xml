@@ -13,7 +13,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LMSApp">
-        <activity android:name=".ProdutoCadastroActivity"></activity>
         <activity android:name=".ForumActivity" />
         <activity
             android:name=".NavigationDrawerActivity"
@@ -24,10 +23,12 @@
             android:name=".TelaInicialActivity"
             android:theme="@style/Theme.Toolbar" />
         <activity android:name=".DebugActivity" />
+
         <activity
             android:name=".ProdutoActivity"
             android:parentActivityName=".TelaInicialActivity"
             android:theme="@style/AppTheme.Toolbar" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,6 +36,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ProdutoCadastroActivity"></activity>
+
+        <service android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
     </application>
 
 </manifest>

@@ -7,4 +7,6 @@
     <string name="action_config">Config</string>
     <string name="drawer_open">Aberto</string>
     <string name="drawer_close">Fechada</string>
+    <string name="action_adicionar">Adicionar</string>
+    <string name="action_remover">Remover</string>
 </resources>

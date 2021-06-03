@@ -27,8 +27,6 @@ class ProdutosAdapter(
             cardProgress = view.findViewById(R.id.card_progresso)
             cardView = view.findViewById(R.id.card_disciplina)
         }
-
-
     }
 
     override fun getItemCount() = this.produtos.size

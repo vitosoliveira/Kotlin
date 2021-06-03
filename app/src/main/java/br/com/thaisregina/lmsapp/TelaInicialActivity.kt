@@ -1,5 +1,6 @@
 package br.com.thaisregina.lmsapp
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -17,6 +18,7 @@ import kotlinx.android.synthetic.main.login.*
 
 
 class TelaInicialActivity : NavigationDrawerActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_inicial)
@@ -27,7 +29,7 @@ class TelaInicialActivity : NavigationDrawerActivity() {
         val args = intent.extras
         val usuario = args?.getString("usuario")
 
-        Toast.makeText(this, usuario, Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "usuario: $campo_usuario", Toast.LENGTH_LONG).show()
 
 //        textoTelaInicial.setText("Olá $usuario")
 
@@ -48,10 +50,14 @@ class TelaInicialActivity : NavigationDrawerActivity() {
     private fun taskProdutos(){
 
         Thread{
-            this.produtos = ProdutosService.getDisciplinas()
+            this.produtos = ProdutosService.getProdutos()
             runOnUiThread {
                 // Atualizar lista
                 recycleProdutos?.adapter = ProdutosAdapter(produtos) {onClickProdutos(it)}
+
+                val intent = Intent(this, ProdutoActivity::class.java)
+                intent.putExtra("Produto", produtos[0])
+                NotificationUtil.create(1, intent, "LMSApp", "Você tem uma nova receita em ${produtos[0].nome}")
             }
         }.start()
     }
@@ -63,7 +69,6 @@ class TelaInicialActivity : NavigationDrawerActivity() {
         intent.putExtra("produto", produtos)
         startActivity(intent)
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         // infla o menu com os botões da ActionBar
@@ -85,6 +90,7 @@ class TelaInicialActivity : NavigationDrawerActivity() {
         return true
     }
 
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
 
@@ -102,11 +108,11 @@ class TelaInicialActivity : NavigationDrawerActivity() {
             startActivity(intent)
         }
         else if (id == android.R.id.home) {
-//            finish()
+           //finish()
             return true
         }
 
         return super.onOptionsItemSelected(item)
     }
-
 }
+

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "611920857022",
+    "project_id": "lmsapp-ads-si-z",
+    "storage_bucket": "lmsapp-ads-si-z.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611920857022:android:80558e29b934b25c80dbef",
+        "android_client_info": {
+          "package_name": "br.com.thaisregina.lmsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611920857022-4c59pvev2dtvemkn31bqkh1auel29epg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBehnD2RFDfK2zEwR6MbvKhd2soJ36SMZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611920857022-4c59pvev2dtvemkn31bqkh1auel29epg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

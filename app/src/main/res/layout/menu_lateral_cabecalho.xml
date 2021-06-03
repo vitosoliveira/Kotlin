@@ -12,7 +12,7 @@
         android:id="@+id/imguser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_adicionar_white"
+        android:src="@mipmap/ic_launcher"
         android:paddingTop="16dp"
     />
 

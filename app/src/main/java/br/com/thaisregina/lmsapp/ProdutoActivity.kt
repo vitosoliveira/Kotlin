@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.toolbar.*
 
 class ProdutoActivity: DebugActivity() {
     var produtos: Produtos? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {    
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_produtos)
 

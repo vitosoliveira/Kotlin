@@ -18,7 +18,7 @@
     <EditText
         android:id="@+id/Receita"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="180dp"
         android:ems="10"
         android:hint="Receita"
         android:inputType="textMultiLine" />
