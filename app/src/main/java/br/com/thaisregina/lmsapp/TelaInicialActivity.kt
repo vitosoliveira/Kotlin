@@ -66,6 +66,13 @@ class TelaInicialActivity : NavigationDrawerActivity() {
         }.start()
     }
 
+    fun onClickDisciplina(produtos: Produtos) {
+        Toast.makeText(context, "Clicou produtos ${produtos.nome}", Toast.LENGTH_SHORT).show()
+        val intent = Intent(context, ProdutoActivity::class.java)
+        intent.putExtra("produtos", produtos)
+        startActivityForResult(intent, REQUEST_REMOVE)
+    }
+
     fun onClickProdutos(produtos: Produtos){
 
         Toast.makeText(this, "Clicou no produto:  ${produtos.nome}", Toast.LENGTH_SHORT).show()
@@ -118,3 +125,4 @@ class TelaInicialActivity : NavigationDrawerActivity() {
         return super.onOptionsItemSelected(item)
     }
 }
+
