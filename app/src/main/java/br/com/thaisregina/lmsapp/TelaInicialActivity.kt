@@ -19,6 +19,10 @@ import kotlinx.android.synthetic.main.login.*
 
 class TelaInicialActivity : NavigationDrawerActivity() {
 
+    private val context: Context get() = this
+    private var REQUEST_CADASTRO = 1
+    private var REQUEST_REMOVE= 2
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tela_inicial)
@@ -78,12 +82,10 @@ class TelaInicialActivity : NavigationDrawerActivity() {
         (menu?.findItem(R.id.action_buscar)?.actionView as SearchView?)?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             override fun onQueryTextChange(newText: String): Boolean {
-                // ação enquanto está digitando
                 return false
             }
 
             override fun onQueryTextSubmit(query: String): Boolean {
-                // ação  quando terminou de buscar e enviou
                 return false
             }
 
@@ -105,14 +107,14 @@ class TelaInicialActivity : NavigationDrawerActivity() {
         else if (id == R.id.action_config){
             val intent = Intent(this, ConfiguracoesActivity::class.java)
             Toast.makeText(this, "Clicou config", Toast.LENGTH_SHORT).show()
-
-            startActivity(intent)
+        } else if (id == R.id.action_adicionar) {
+            // iniciar activity de cadastro
+            val intent = Intent(context, ProdutoCadastroActivity::class.java)
+            startActivityForResult(intent, REQUEST_CADASTRO)
         }
         else if (id == android.R.id.home) {
-           //finish()
-            return true
+            finish()
         }
-
         return super.onOptionsItemSelected(item)
     }
 }
